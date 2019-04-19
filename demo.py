@@ -55,7 +55,8 @@ def visualize(img, proc_param, joints, verts, cam):
         vert_shifted, 60, cam=cam_for_render, img_size=img.shape[:2])
     rend_img_vp2 = renderer.rotated(
         vert_shifted, -60, cam=cam_for_render, img_size=img.shape[:2])
-
+    import matplotlib#add to avoid tkinder err
+    matplotlib.use('agg')#add to avoid tkinder err
     import matplotlib.pyplot as plt
     # plt.ion()
     plt.figure(1)
@@ -85,7 +86,7 @@ def visualize(img, proc_param, joints, verts, cam):
     plt.title('diff vp')
     plt.axis('off')
     plt.draw()
-    plt.show()
+    plt.savefig("figure.png")#changed from 'plt.show()' to avoid error in container
     # import ipdb
     # ipdb.set_trace()
 
